@@ -14,7 +14,7 @@ app.use(express.static(publicDirectoryPath))
 
 let count = 0
 io.on('connection', (socket)=>{
-console.log('New web socket connection')
+console.log('New web-socket connection')
 socket.emit('countUpdated')
 })
 server.listen(port,()=>{
