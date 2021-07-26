@@ -1,1 +1,1 @@
-io()
+const socket = io()
