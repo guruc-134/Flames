@@ -11,11 +11,22 @@ const port = process.env.PORT || 3000
 const publicDirectoryPath = path.join(__dirname, '../public')
 
 app.use(express.static(publicDirectoryPath))
-
-let count = 0
+let message = 'Welcome !'
 io.on('connection', (socket)=>{
-console.log('New web-socket connection')
-socket.emit('countUpdated')
+    // welcome msg to that socket
+    socket.emit('message',message)
+    // notification msg to all but that socket
+    socket.broadcast.emit('message','a new use has joined')
+    //  listening to the sendMessage event
+    socket.on('sendMessage', (inp)=>{
+        // updating/ sending that msg to all the clients on that socket
+        io.emit('message',inp)
+    })
+
+    socket.on('disconnect',()=>{
+        io.emit('message','User has left')
+    })
+    
 })
 server.listen(port,()=>{
     console.log('server listening at port',port)
