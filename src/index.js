@@ -14,7 +14,6 @@ const publicDirectoryPath = path.join(__dirname, '../public')
 
 app.use(express.static(publicDirectoryPath))
 io.on('connection', (socket)=>{
-
     socket.on('join',({username,room})=>{
         socket.join(room)
         socket.emit('message',generateMessage("Welcome!"))
@@ -26,7 +25,7 @@ io.on('connection', (socket)=>{
         {
             return callback("Profanity is not allowed!")
         }
-        io.emit('message',generateMessage(inp))
+        io.to('12').emit('message',generateMessage(inp))
         callback('Delivered')
     })
 
