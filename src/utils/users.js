@@ -36,6 +36,7 @@ const removeUser =(id)=>{
     {
         return users.splice(ind,1)[0]
     }
+    return undefined
 }
 
 const getUser =(id)=>{
