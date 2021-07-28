@@ -31,3 +31,6 @@ btn.addEventListener('click', ()=>{
 // socket.emit() to the targeted socket, 
 // io.emit() to everyone connected
 //  socket.broadcast.emit() to everyone but the targeted user 
+
+// io.to.emit() send msg to everyone in that room
+// socket.broadcast.to.emit() send msg to everyone in that room except that client 

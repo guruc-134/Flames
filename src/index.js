@@ -13,10 +13,13 @@ const port = process.env.PORT || 3000
 const publicDirectoryPath = path.join(__dirname, '../public')
 
 app.use(express.static(publicDirectoryPath))
-let message = 'Welcome !'
 io.on('connection', (socket)=>{
-    socket.emit('message',generateMessage("Welcome!"))
-    socket.broadcast.emit('message',generateMessage('a new use has joined'))
+
+    socket.on('join',({username,room})=>{
+        socket.join(room)
+        socket.emit('message',generateMessage("Welcome!"))
+        socket.broadcast.to(room).emit('message',generateMessage(`${username} has joined`))
+    })
     socket.on('sendMessage', (inp,callback)=>{
         const filter = new  Filter()
         if(filter.isProfane(inp))
@@ -31,6 +34,7 @@ io.on('connection', (socket)=>{
         io.emit('locationMessage',generateLocationMessage(`https://google.com/maps?q=${latitude},${longitude}`))
         callback()
     })
+
     socket.on('disconnect',()=>{
         io.emit('message',generateMessage('User has left'))
     })
