@@ -24,6 +24,7 @@ io.on('connection', (socket)=>{
         const username = "admin"
         socket.emit('message',{username,...generateMessage('Welcome!')})
         socket.broadcast.to(user.room).emit('message',{username,...generateMessage(`${user.username} has joined`)})
+        io.to(user.room).emit('roomData',{room:user.room,users:getUsersInRoom(user.room)})
         callback()
     })
     socket.on('sendMessage', (inp,callback)=>{
@@ -51,6 +52,10 @@ io.on('connection', (socket)=>{
         if(user)
         {
             io.to(user.room).emit('message',{username,...generateMessage(`${user.username} has left`)})
+            io.to(user.room).emit('roomData',{
+                room:user.room,
+                users:getUsersInRoom(user.room)
+            })
         }
     })
     

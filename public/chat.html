@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class='chat'>
-        <div class='chat__sidebar'>
+        <div id='sidebar' class='chat__sidebar'>
             <h1> Chat App</h1>
 
         </div>
@@ -48,6 +48,17 @@
                 <p>
                     <a href={{location}} target='_blank'> My location</a>
                 </p>
+        </div>
+    </script>
+    <script id='sidebar-content-template' type='text/html'>
+        <div>
+            <h2 class='room-title'>{{room}}</h2>
+            <h3 class='list-title'>Users</h3>
+            <ul class='users'>
+                {{#users}}
+                <li>{{username}}</li>
+                {{/users}}
+            </ul>
         </div>
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js"></script>
