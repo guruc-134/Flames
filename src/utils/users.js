@@ -37,16 +37,18 @@ const removeUser =(id)=>{
         return users.splice(ind,1)[0]
     }
 }
-const re = addUser({
-    id:12,
-    username:'guru',
-    room:'12'
-})
-const re1 = addUser({
-    id:121,
-    username:'guru123',
-    room:'12'
-})
 
-removeUser(121)
-console.log(users)
+const getUser =(id)=>{
+    const user = users.find(user => user.id === id)
+    if(!user) return undefined
+    return user
+}
+
+const getUsersInRoom = (room) =>{
+    room = room.trim().toLowerCase()
+    const roomUsers = users.filter(user => user.room === room)
+    if(!roomUsers) return []
+    return roomUsers
+}
+
+module.exports = {getUser,getUsersInRoom,removeUser,addUser}
