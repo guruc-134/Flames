@@ -1,5 +1,10 @@
 /* General Styles */
-
+:root{
+    --background-primary:#F7A440;
+    --background-secondary:#F6DCBF;
+    --color-secondary:#FFC288;
+    --color-primary:#E1701A;
+}
 * {
     margin: 0;
     padding: 0;
@@ -19,47 +24,87 @@ body {
     color: #333333;
     font-family: Helvetica, Arial, sans-serif;
 }
-
+.index_body{
+    background: var(--background-primary);
+    font-family: 'Bungee', cursive;
+    margin:auto;
+    text-align:center;
+    width:100%;
+}
+.chat__sidebar{
+}
+#sidebar{
+    font-family: 'Bungee', cursive;
+}
 h1 {
     margin-bottom: 16px;
+}
+.room_type{
+    margin:1rem auto;
+    display: flex;
+    flex-direction: row;
+    padding:1rem;
+    justify-content: space-between;
+    align-items: center;
+}
+.room_type_select{
+    border: none;
+    font-size:1.2rem;
+    background-color:transparent;
+    outline: none;
+    font-size:10px;
+    font-family: 'Bungee', cursive;  
+}
+.join{
+    font-family: 'Bungee', cursive;
 }
 
 label {
     display: block;
+    font-family: 'Bungee', cursive;
+
     font-size: 14px;
     margin-bottom: 8px;
     color: #777;
 }
 
-input {
+input{
     border: 1px solid #eeeeee;
-    padding: 12px;
+    padding: 1.1em;
     outline: none;
+    font-size:10px;
+    font-family: 'Bungee', cursive;
+
 }
 
 button {
     cursor: pointer;
-    padding: 12px;
-    background: #7C5CBF;
+    padding: 8px;
+    background: var(--color-secondary);
     border: none;
     color: white;
+    box-shadow: 0px 0px 7px 1px #ce4f3e;
+    font-weight: 600;
     font-size: 16px;
+    border-radius: 5px;
     transition: background .3s ease;
 }
 
 button:hover {
-    background: #6b47b8;
+    background: var(--color-primary);
+    box-shadow: 0px 0px 7px 1px #f09b2b;
+
 }
 
 button:disabled {
     cursor: default;
-    background: #7c5cbf94;
+    background: var(--color-secondary);
 }
 
 /* Join Page Styles */
 
 .centered-form {
-    background: #333744;
+    background: var(--background-primary);
     width: 100vw;
     height: 100vh;   
     display: flex;
@@ -69,9 +114,11 @@ button:disabled {
 
 .centered-form__box {
     box-shadow: 0px 0px 17px 1px #1D1F26;
-    background: #F7F7FA;
-    padding: 24px;
-    width: 250px;
+    border-radius: 10px;
+    background: var(--background-secondary);
+    padding:3em;
+    width: 45%;
+    max-width: 500px;
 }
 
 .centered-form button {
@@ -92,11 +139,25 @@ button:disabled {
 .chat__sidebar {
     height: 100vh;
     color: white;
-    background: #333744;
+    background: var(--background-primary);
     width: 225px;
-    overflow-y: scroll
+    /* overflow-y: scroll */
 }
-
+.chat__sidebar::-webkit-scrollbar {
+    width: 1rem;
+    height:6px;
+  }
+  .chat__sidebar::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    
+    background: rgba(255, 255, 255, 0.473);
+    -webkit-backdrop-filter: blur( 3px );
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.596);
+  }
+  .chat__sidebar::-webkit-scrollbar-track {
+    background: transparent
+  }
 /* Chat styles */
 
 .chat__main {
@@ -164,19 +225,28 @@ button:disabled {
 
 .room-title {
     font-weight: 400;
+    text-decoration: underline;
+    width:100%;
     font-size: 22px;
-    background: #2c2f3a;
+    background: var(--color-primary);
     padding: 24px;   
 }
 
 .list-title {
     font-weight: 500;
+    text-decoration: underline;
     font-size: 18px;
     margin-bottom: 4px;
     padding: 12px 24px 0 24px;
 }
 
 .users {
+    list-style-type: none;
+    font-weight: 300;
+    padding: 12px 24px 0 24px;
+}
+
+.rooms{
     list-style-type: none;
     font-weight: 300;
     padding: 12px 24px 0 24px;

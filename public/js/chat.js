@@ -10,8 +10,14 @@ const $messages = document.querySelector('#messages')
 const messageTemplate = document.querySelector('#message-template').innerHTML
 const locationMessageTemplate = document.querySelector('#location-message-template').innerHTML
 const sidebarTemplate = document.querySelector('#sidebar-content-template').innerHTML
+const roomsListTemplate = document.querySelector('#rooms-list-template')
 //  options 
-const {username,room} = Qs.parse(location.search,{ignoreQueryPrefix:true})
+const {username,room,roomType} = Qs.parse(location.search,{ignoreQueryPrefix:true})
+const getUser =(users,id)=>{
+    const user = users.find(user => user.id === id)
+    if(!user) return undefined
+    return user.username
+}
 
 const autoScroll = ()=>{
     // New message element
@@ -51,8 +57,9 @@ socket.on('locationMessage',(location)=>{
     autoScroll()
 
 })
-socket.on('roomData',({room, users})=>{
-    const html = Mustache.render(sidebarTemplate,{room,users})
+socket.on('roomData',({room, users,publicRooms})=>{
+    const curUser = getUser(users,socket.id)
+    const html = Mustache.render(sidebarTemplate,{room,users,publicRooms,curUser})
     document.querySelector('#sidebar').innerHTML = html
 })
 $messageForm.addEventListener('submit',(e)=>{
@@ -90,7 +97,7 @@ $sendLocationBtn.addEventListener('click',()=>{
     })
 })
 
-socket.emit('join',{username,room},(error)=>{
+socket.emit('join',{username,room,roomType},(error)=>{
     if(error)
     {
         alert(error)

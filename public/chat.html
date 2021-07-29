@@ -7,6 +7,10 @@
     <title>Flames</title>
     <link rel="stylesheet" href="./css/styles.css">
     <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="shortcut icon" href="./img/fire.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class='chat'>
@@ -59,6 +63,19 @@
                 <li>{{username}}</li>
                 {{/users}}
             </ul>
+            <h3 class='list-title'>
+                Public rooms
+            </h3>
+            <ul class='rooms'>
+                {{#publicRooms}}
+                <li>
+                <a href="/chat.html?room={{room}}&username={{curUser}}&roomType=Public">
+                    {{room}}
+                </a>
+            </li>
+                {{/publicRooms}}
+            </ul>
+            
         </div>
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js"></script>
