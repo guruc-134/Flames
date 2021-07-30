@@ -18,6 +18,8 @@ This application is built using socket programming
 <img src='./readmeAssets/phone-removebg-preview.png'  width="150" align="left"/>
 <img src='./readmeAssets/tab-removebg-preview.png'  width="250" align="right"/>
  </div>
+ <br>
+ <br>
  <div align='center'>
 <img src='./readmeAssets/laptop-removebg-preview.png'  width="500"/>
 </div>
