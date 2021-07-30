@@ -15,7 +15,9 @@ This application is built using socket programming
 
 ## some images of this application
 <div>
-<img src='./readmeAssets/phone-removebg-preview.png'  width="150"/>
-<img src='./readmeAssets/tab-removebg-preview.png'  width="250"/>
+<img src='./readmeAssets/phone-removebg-preview.png'  width="150" align="left"/>
+<img src='./readmeAssets/tab-removebg-preview.png'  width="250" align="right"/>
+ </div>
+ <div align='center'>
 <img src='./readmeAssets/laptop-removebg-preview.png'  width="500"/>
 </div>
