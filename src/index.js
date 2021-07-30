@@ -9,6 +9,7 @@ const app = express()
 const server = http.createServer(app)
 const io = socketio(server)
 
+
 const port = process.env.PORT || 3000
 const publicDirectoryPath = path.join(__dirname, '../public')
 
@@ -36,7 +37,7 @@ io.on('connection', (socket)=>{
         }
         const username = user.username
         io.to(user.room).emit('message',{username,...generateMessage(inp)})
-        callback('Delivered !')
+        callback()
     })
 
     socket.on('sendLocation',({latitude,longitude},callback)=>{

@@ -5,7 +5,8 @@ const $messageFormInput = $messageForm.querySelector('input')
 const $messageFormButton = $messageForm.querySelector('button')
 const $sendLocationBtn = document.querySelector('#send-location')
 const $messages = document.querySelector('#messages')
-
+const $menuButton = document.querySelector('.menuButton')
+const $darkScreen = document.querySelector('.darkScreen')
 // templates
 const messageTemplate = document.querySelector('#message-template').innerHTML
 const locationMessageTemplate = document.querySelector('#location-message-template').innerHTML
@@ -74,10 +75,8 @@ $messageForm.addEventListener('submit',(e)=>{
         {
             return console.log(error)
         }
-        console.log('the message was delivered')
     })
 })
-
 //  sending client location
 $sendLocationBtn.addEventListener('click',()=>{
     if( !navigator.geolocation)
@@ -97,10 +96,34 @@ $sendLocationBtn.addEventListener('click',()=>{
     })
 })
 
+$menuButton.addEventListener('click',()=>{
+    document.querySelector('#sidebar').style.display = 'block';
+    document.querySelector('.navbar').style.display = 'none';
+    document.querySelector('.darkScreen').style.display = 'block';
+})
+$darkScreen.addEventListener('click',()=>{
+    document.querySelector('.darkScreen').style.display = 'none';
+    document.querySelector('.navbar').style.display = 'flex';
+    document.querySelector('#sidebar').style.display = 'none';
+})
 socket.emit('join',{username,room,roomType},(error)=>{
     if(error)
     {
         alert(error)
         location.href = '/ '
+    }
+})
+
+window.addEventListener('resize', ()=>{
+    if(window.innerWidth<=700)
+    { 
+        document.querySelector('.navbar').style.display = 'flex';
+        document.querySelector('#sidebar').style.display = 'none';
+    }
+    else
+    {
+    document.querySelector('.darkScreen').style.display = 'none';
+        document.querySelector('#sidebar').style.display = 'block';
+        document.querySelector('.navbar').style.display = 'none';
     }
 })

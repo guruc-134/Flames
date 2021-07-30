@@ -76,7 +76,6 @@ const getUsersInRoom = (room,roomType) =>{
 }
 
 const getAllPublicRooms = () =>{
-    console.log(rooms)
     const list = rooms.filter(room =>room.roomType === 'public')
     list.sort()
     return list
