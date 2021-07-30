@@ -1,7 +1,7 @@
-<div>
+
 <img src='./public/img/fire.png'/>
 <h1>Flames </h1>
-</div>
+
 Flames is a chat application , for instant chatting, come chat and go, explore the public rooms and make new friends all at the convenience of being anonymous.
 
 This application is built using socket programming
