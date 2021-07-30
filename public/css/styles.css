@@ -193,7 +193,12 @@ button:disabled {
     font-size: 14px;
     margin-right: 8px;
 }
-
+.home-title{
+background-color:var(--color-primary);
+text-align: left;
+padding:15px;
+font-size: 1.3rem;;
+}
 .message__meta {
     color: #777;
     font-size: 14px;
@@ -308,7 +313,9 @@ button:disabled {
     width:100%;
     font-size: 22px;
     background: var(--color-primary);
-    padding: 24px;   
+    text-align: center;
+    margin-top: -3rem;;
+    padding:10px;
 }
 .location{
     text-decoration: none;
