@@ -1,3 +1,4 @@
+const io = socketio(server)
 const socket = io()
 // elements
 const $messageForm = document.querySelector('#message-form')
