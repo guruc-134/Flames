@@ -1,4 +1,4 @@
-const socketio = require('socket.io')
+import socketio from 'socket.io';
 const io = socketio(server)
 const socket = io()
 // elements
